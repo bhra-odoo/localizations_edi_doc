@@ -17,7 +17,13 @@ For services managed by Odoo's IAP (like Peppol or the Italian SDI), the databas
 * **Developer Mode:** Turn on debug mode (`?debug=1`).
 * **Settings:** Go to **Settings > Technical > System Parameters**.
 * Add or verify the key `iap.endpoint` or checking `odoo.conf` parameters. Note: Odoo standard SaaS databases have a built-in test mock for IAP on staging branches.
-* **In standard local branches (like a developer environment):** Most IAP calls will fail or route to a mock test server automatically unless you purchase IAP credits. For Peppol, Odoo has a specific mock environment for local testing.
+
+### Peppol-Specific Demo Mode
+Odoo features a dedicated sandbox specifically for Peppol to allow fake transmissions.
+* **Configuration:** In **Accounting > Configuration > Settings**, under Peppol, check the **"Demo Mode"** box (often requires developer mode).
+* **Registration:** Registers your company on a mock IAP server without SMS or business verification.
+* **Customer Credentials:** Set the test customer's Peppol EAS to `9999` and Endpoint ID to `TEST`. The mock server auto-validates this.
+* **Loopback Testing for Sessions:** By sending a Peppol invoice to a vendor configured with your own registered Demo Endpoint ID, you can demonstrate Odoo's automated Vendor Bill creation when the Peppol fetch cron job runs.
 
 ## 3. Country-Specific Test Credentials
 
